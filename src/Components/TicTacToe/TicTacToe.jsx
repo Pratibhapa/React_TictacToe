@@ -1,15 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TicTacToe.css';
 
 import bluecirle from '../Assets/bluecircle.jpg'
-import yellow from  '../Assets/yellow.png'
+import yellow from '../Assets/yellow.png'
+
+let data = ["", "", "", "", "", "", "", "", ""];
+
 const TicTacToe = () => {
-  return (
-    <div>
-      
-      
-    </div>
-  )
+    let [count, setCount] = useState(0);
+    let [lock, setLock] = useState(false);
+
+    const toggle = (e, w, num) => {
+        if (lock) {
+            return 0;
+        }
+        if (count % 2 === 0) {
+            e.target.innerHTML = `<img src='${bluecirle}'>`;
+            data [num] = "x";
+            setCount(++count);
+        }
+        else
+        {
+            e.target.innerHTML = `<img src='${yellow}'>`;
+            data [num] = "0";
+            setCount(++count);
+
+        }
+    }
+
+    return (
+        <div className='container'>
+            <h1 className='title'>Tic Tac Toe Game In <span>React</span></h1>
+            <div className='board'>
+                <div className='row1'>
+                    <div className='boxes' onClick={(e) => toggle(e, 1)}></div>
+                    <div className='boxes' onClick={(e) => toggle(e, 2)}></div>
+                    <div className='boxes' onClick={(e) => toggle(e, 3)}></div>
+                </div>
+                <div className='row2'>
+                    <div className='boxes' onClick={(e) => toggle(e, 4)}></div>
+                    <div className='boxes' onClick={(e) => toggle(e, 5)}></div>
+                    <div className='boxes' onClick={(e) => toggle(e,  6)}></div>
+                </div>
+                <div className='row3'>
+                    <div className='boxes' onClick={(e) => toggle(e,  7)}></div>
+                    <div className='boxes' onClick={(e) => toggle(e,  8)}></div>
+                    <div className='boxes' onClick={(e) => toggle(e,  9)}></div>
+                </div>
+            </div>
+            <button className='reset'>Reset</button>
+        </div>
+    );
 }
 
-export default TicTacToe
+export default TicTacToe;
