@@ -81,6 +81,11 @@ const TicTacToe = () => {
         {
             titleRef.current.innerHTML = `Congratulations: <img src=${yellow}>`;
         }
+        const reset = () => {
+            setLock(false);
+            data = ["", "", "", "", "", "", "", "", "",""];
+            titleRef.current.innerHTML = 'Tic Tac Toe In <span>React</span>'
+        }
     }
 
     return (
@@ -103,7 +108,7 @@ const TicTacToe = () => {
                     <div className='boxes' onClick={(e) => toggle(e,  8)}></div>
                 </div>
             </div>
-            <button className='reset'>Reset</button>
+            <button className='reset' onClick={()=>{reset}}>Reset</button>
         </div>
     );
 
